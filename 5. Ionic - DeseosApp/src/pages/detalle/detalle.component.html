@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-title class="centrar">{{ lista.listaNombre | uppercase }}</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content padding>
+
+      <ion-card>
+
+        <ion-card-header>
+          <ion-item>
+            <ion-input type="text"
+              placeholder="Título de Lista"
+              [(ngModel)]="lista.listaNombre" name="listaNombre"></ion-input>
+          </ion-item>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-list>
+            <ion-item *ngFor="let item of lista.items" (click)="actualizar(item)">
+              <ion-icon item-left *ngIf="item.itemFinished" name="checkbox-outline"></ion-icon>
+              <ion-icon item-left *ngIf="!item.itemFinished" name="square-outline"></ion-icon>
+              <h2 [class.tachado]="item.itemFinished">{{ item.itemNombre }}</h2>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+
+      </ion-card>
+
+      <ion-item>
+        <button (click)="eliminarLista()" ion-button color="danger" block round>Borrar Lista</button>
+      </ion-item>
+
+  </ion-content>

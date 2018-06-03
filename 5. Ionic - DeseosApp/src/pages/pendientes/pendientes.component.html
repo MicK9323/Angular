@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title class="centrar">Listas de Pendientes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-grid *ngIf="( _listaPendientes.listas | pendientes ).length === 0" >
+    <ion-row>
+      <ion-col class="centrado caja-vacia">
+          <ion-icon class="icono-grande" name="partly-sunny"></ion-icon>
+          <p>No Hay Listas Pendientes</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card *ngFor="let lista of _listaPendientes.listas | pendientes ; let idx = index">
+
+    <ion-item color="light" (click)="verDetalle(lista, idx)">
+      <h2 class="titulo">{{ lista.listaNombre }}</h2>
+      <ion-note item-right color="dark">
+        {{ lista.items.length }} items
+      </ion-note>
+    </ion-item>
+    <ion-list>
+      <ion-item (click)="verDetalle(lista, idx)"
+                *ngFor="let item of lista.items | slice:0:2">
+        <ion-icon *ngIf="item.itemFinished" name="checkbox-outline"></ion-icon>
+        <ion-icon *ngIf="!item.itemFinished" name="square-outline"></ion-icon>
+         {{ item.itemNombre }}
+      </ion-item>
+      <ion-item color="light" class="centrado" *ngIf="lista.items.length > 2">
+          <ion-icon name="arrow-dropdown"></ion-icon>
+      </ion-item>
+    </ion-list>
+
+  </ion-card>
+
+  <!-- Boton flotante -->
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="toAgregar()">
+      <ion-icon name="md-add"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

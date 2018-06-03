@@ -1,0 +1,8 @@
+{
+  "name": "DeseosApp",
+  "app_id": "6644e1cf",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
