@@ -1,0 +1,94 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 col-sm-12">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- <label for="termino" class="control-label font-green">Buscar</label> -->
+          <br>
+          <input class="form-control"
+          type="text" name="termino"
+          placeholder="Buscar..." #buscar
+          (keyup)="_search.obtenerBusqueda( buscar.value )"
+          [(ngModel)]="termino">
+          <br class="visible-sm visible-xs">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12" *ngIf="termino.length >= 1">
+            <h5 class="font-green">Resultados: "{{ termino | titlecase }}"</h5>
+            <hr class="hr-green">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 text-center search-item"
+                *ngFor="let artista of _spotify.artistas"
+                [routerLink]="['/artist', artista.id]" >
+                <img [src]=" artista.images | sinfoto: 1 " height="120" width="120" class="img-circle">
+                <h6>{{ artista.name }}</h6>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9 col-sm-12">
+      <!-- Cabecera de artista -->
+      <div class="row">
+        <div class="col-md-12 main-artist">
+          <div class="row">
+            <div class="col-md-4 text-center">
+                <img class="img-circle"
+                [src]="artist.images | sinfoto: 1"
+                [alt]="artist.name"
+                [title]="artist.name"
+                height="240" width="240">
+            </div>
+            <div class="col-md-6 text-left">
+              <h1 class="medium">{{ artist.name | titlecase }}</h1>
+              <hr class="hr-green">
+              <h5><strong class="green">Seguidores: </strong><small>{{ total }}</small></h5>
+              <h5>
+                <strong class="green">Géneros: </strong>
+                <small *ngFor=" let genero of artist.genres " >/ {{ genero }} </small>
+              </h5>
+              <hr class="hr-green">
+              <button type="button" class="btn btn-outline-success">Reproducir</button>
+              <button type="button" class="btn btn-outline-secondary">Ir a Inicio</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Top tracks -->
+      <div class="row">
+        <div class="col-md-12 content-artist">
+          <table class="table table-hover table-dark">
+            <thead>
+              <th class="text-center green">#</th>
+              <th class="text-center green">Portada</th>
+              <th class="text-center green">Título</th>
+              <th class="text-center green">Popularidad</th>
+              <th class="text-center green">Reproducir</th>
+            </thead>
+            <tbody>
+              <tr *ngFor=" let track of toptracks; let i = index " >
+                <td class="track-number">{{ i + 1 }}</td>
+                <td class="text-center"><img [src]=" track.album.images | sinfoto: 2 " height="64" width="64" ></td>
+                <td class="text-left">{{ track.name }}</td>
+                <td class="text-left">
+                  <div class="progress">
+                    <div class="progress-bar bg-success"
+                         role="progressbar" [style.width]="track.popularity + '%'"
+                         aria-valuenow="track.popularity" aria-valuemin="0" aria-valuemax="100">{{ track.popularity }}%</div>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <audio controls>
+                    <source [src]="track.preview_url" >
+                    <h5 class="text-danger">No suport!</h5>
+                  </audio>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

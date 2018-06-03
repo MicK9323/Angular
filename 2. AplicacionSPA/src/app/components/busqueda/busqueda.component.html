@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-12">
+    <br>
+    <h3>Resultados de Búsqueda: '{{ termino }}'</h3>
+    <hr>
+  </div>
+</div>
+<ng-container *ngIf="heroes.length < 1; else elseTemplate">
+  <div class="alert alert-primary" role="alert">
+    No se encontraron coincidencias!
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div class="alert alert-success" role="alert">
+    Se encontraron {{ heroes.length }} coincidencias!
+  </div>
+  <div class="row">
+      <div class="col-md-12">
+        <div class="card-columns">
+          <!-- START CARD -->
+          <div class="card animated fadeIn fast" *ngFor="let heroe of heroes; let i = index">
+            <img class="card-img-top" [src]="heroe.img" [alt]="heroe.nombre" [title]="heroe.nombre">
+            <div class="card-body">
+              <h4 class="card-title">{{ heroe.nombre }}</h4>
+              <p class="card-text">{{ heroe.bio }}</p>
+              <p class="card-text"><small class="text-muted">{{ heroe.aparicion }}</small></p>
+              <!-- Direccionar mediante evento clivk y funciones se asigna el evento click y se llama
+                al metodo definino en la clase del componente-->
+              <input type="hidden" [value]="heroe.id" #id >
+              <button type="button" (click)="verHeroe(id.value)" class="btn btn-outline-primary btn-block">Boton Ver más...</button>
+              <!-- Con el routerlink debemos agregar un "/" antes del path ya que necesita volver al
+                directorio raiz -->
+              <!-- <a [routerLink]="[ '/heroe', i ]" class="btn btn-outline-primary btn-block">Link Ver más...</a> -->
+            </div>
+          </div>
+          <!-- END CARD -->
+        </div>
+      </div>
+    </div>
+</ng-template>
+

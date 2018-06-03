@@ -1,0 +1,142 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+  background-color: black;
+  color: white !important;
+}
+
+hr{
+  border-color: white;
+}
+
+.jumbotron{
+  background-color: #171717;
+}
+
+.puntero{
+  cursor: pointer;
+}
+
+.carousel-item{
+  width: 100%;
+  height: 500px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@media (max-width: 600px) {
+  .carousel-item {
+    height: 280px;
+  }
+}
+
+
+.main-container{
+  margin-top: 5%;
+  margin-bottom: 7%;
+}
+
+.img-circle{
+  border-radius: 100%;
+}
+
+
+/* Animaciones */
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.fast {
+  -webkit-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}
+
+.top30{
+  margin-top: 30px;
+}
+
+
+/* OWN STYLES */
+.dash:hover{
+  color: #00CD58;
+  cursor: pointer;
+}
+
+.dash:hover img{
+  background-color: #00CD58;
+  border-radius: 5%;
+}
+
+.dash:hover hr{
+  border-color: #00CD58;
+}
+
+.font-green{
+  color: #00CD58;
+}
+
+.hr-green{
+  border-color: #00CD58;
+  width: 100%;
+}
+
+.search-item:hover{
+  color: #00CD58;
+  cursor: pointer;
+}
+
+/* artist component */
+.main-artist{
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 40px;
+  align-items: center;
+  background-image: url('assets/img/texturas/bg2.jpg');
+  background-size: cover;
+}
+
+.sombra{
+  box-shadow: 0 4px 8px 0 rgba(224, 219, 219, 0.712),
+              0 6px 20px 0 rgba(224, 219, 219, 0.712);
+}
+
+.medium{
+  font-size: 48px;
+  line-height: 30px;
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+
+.green{
+  color: #00CD58;
+}
+
+.content-artist{
+  background-color: #2C2C2C;
+  padding: 40px;
+}
+
+.track-number{
+  vertical-align: middle;
+  text-align: center;
+}

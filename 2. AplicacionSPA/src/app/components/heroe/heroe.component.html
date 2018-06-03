@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>{{ heroe.nombre | uppercase }} <small>({{ heroe.aparicion | date: 'y' }})</small></h1>
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 text-center">
+    <img class="img-thumbnail" [src]="heroe.img" [title]="heroe.nombre" [title]="heroe.nombre">
+    <br><br>
+  </div>
+  <div class="col-md-8">
+    <h3 class="text-capitalize">{{ heroe.nombre }} - <small>{{ heroe.casa }}</small></h3>
+    <hr>
+    <p class="text-justify">{{ heroe.bio }}</p>
+    <ng-container *ngIf="heroe.casa.match('Marvel')">
+      <img class="img-fluid" src="assets/img/marvel.jpg" [alt]="heroe.casa" [title]="heroe.casa">
+    </ng-container>
+    <ng-container *ngIf="heroe.casa.match('DC')">
+      <img class="img-fluid" src="assets/img/dc.png" [alt]="heroe.casa" [title]="heroe.casa">
+    </ng-container>
+    <br><br>
+    <a [routerLink]="[ '/heroes' ]" class="btn btn-outline-danger btn-block">Regresar</a>
+  </div>
+</div>
