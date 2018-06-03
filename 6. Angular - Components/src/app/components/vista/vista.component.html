@@ -1,0 +1,191 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="text-dark text-center">Demos - Componentes y Directivas</h2>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <!-- Primera Columna -->
+    <div class="col-md-6">
+      <!-- Primer demo -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Directiva NgStyle</h5>
+              <hr>
+              <p [style.fontSize.px]="tamano"> Lorem ipsum dolor sit amet consectetur. </p>
+              <button class="btn btn-primary" (click)="aumentar()">Aumentar <i class="fas fa-plus"></i></button>
+              <button class="btn btn-primary" (click)="disminuir()">Disminuir <i class="fas fa-minus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <!-- Segundo demo -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Directiva NgClass</h5>
+              <hr>
+              <div [ngClass]="alerta"  role="alert">
+                  This is a <strong>{{texto}}</strong> alert—check it out!
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <button (click)="cambiarAlerta('primary')" class="btn btn-primary">Primary</button>
+                  <button (click)="cambiarAlerta('secondary')" class="btn btn-secondary">Secondary</button>
+                  <button (click)="cambiarAlerta('success')" class="btn btn-success">Success</button>
+                  <button (click)="cambiarAlerta('danger')" class="btn btn-danger">Danger</button>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-12">
+                  <button (click)="cambiarAlerta('warning')" class="btn btn-warning">Warning</button>
+                  <button (click)="cambiarAlerta('info')" class="btn btn-info">Info</button>
+                  <button (click)="cambiarAlerta('light')" class="btn btn-light">Light</button>
+                  <button (click)="cambiarAlerta('dark')" class="btn btn-dark">Dark</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Segunda Columna -->
+    <div class="col-md-6">
+      <!-- Tercer demo -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Indicador de Procesos Asincronos</h5>
+              <hr>
+              <button (click)="guardarCambios()"
+                [disabled]="carga"
+                class="btn btn-outline-primary">
+                <i [ngClass]="{'fa-save':!carga, 'fa-spin fa-sync-alt':carga}"
+                   class="fas"></i>
+                <span *ngIf="!carga">Guardar Cambios</span>
+                <span *ngIf="carga">Guardando...</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Cuarto demo -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Directivas Personalizadas</h5>
+              <hr>
+              <p [appResaltado]="'#3B2DDB'" >
+                Hola mundo
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Quinto demo -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card text-white bg-dark mb-3">
+            <div class="card-body">
+              <h5 class="card-title">ng-Switch</h5>
+              <hr>
+              <div class="col-md-10">
+                <select class="form-control" #tipoAlerta (change)="cambiarAlerta2(tipoAlerta.value)">
+                  <option value="" disabled>Seleccione una opción</option>
+                  <option value="primary">Primary</option>
+                  <option value="secondary">Secondary</option>
+                  <option value="success">Success</option>
+                  <option value="danger">Danger</option>
+                  <option value="warning">Warning</option>
+                  <option value="info">Info</option>
+                  <option value="light">Light</option>
+                  <option value="dark">Dark</option>
+                </select>
+              </div>
+              <br>
+              <div class="col-md-12" [ngSwitch]="switchAlert">
+                <div *ngSwitchCase="'primary'" >
+                  <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                </div>
+                <div *ngSwitchCase="'secondary'" >
+                  <div class="alert alert-secondary" role="alert">
+                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                </div>
+                <div *ngSwitchCase="'success'" >
+                  <div class="alert alert-success" role="alert">
+                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                </div>
+                <div *ngSwitchCase="'danger'" >
+                  <div class="alert alert-danger" role="alert">
+                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                </div>
+                <div *ngSwitchCase="'warning'" >
+                  <div class="alert alert-warning" role="alert">
+                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                </div>
+                <div *ngSwitchCase="'info'" >
+                  <div class="alert alert-info" role="alert">
+                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                </div>
+                <div *ngSwitchCase="'light'" >
+                  <div class="alert alert-light" role="alert">
+                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                </div>
+                <div *ngSwitchCase="'dark'" >
+                  <div class="alert alert-dark" role="alert">
+                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                </div>
+                <div *ngSwitchDefault >
+                  <div class="alert alert-info" role="alert">
+                    <strong>Seleccione un tipo de alerta</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

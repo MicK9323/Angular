@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="text-dark text-center">Demos - Rutas Padre y Rutas hijas</h2>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['nuevo']">Nuevo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['editar']">Editar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['detalle']">Detalle</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>
+
